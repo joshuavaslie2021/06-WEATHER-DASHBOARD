@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-light"><h1>Weather Dashboard</h1></nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="input-group mb-3">
+                    <label for="city-search">Search for a City:</label>
+                    <input type="text" class="form-control" id="city-search" placeholder="Search">
+                    <div class="input-group-append">
+                    <button class="btn btn-success" type="submit" id="cityParameter">Go</button>
+                    </div>
+                </div>
+                <ul class="list-group">
+                    <!-- intented to list all of previous cities queried by preffence, to retrieve results in futre.-->
+                    <!-- <li class="list-group-item">First item</li>
+                    <li class="list-group-item">Second item</li>
+                    <li class="list-group-item">Third item</li> -->
+                </ul>
+            </div>
+            <div class="col-md-9">
+                    <div class="jumbotron">
+                        <h1 id="T-city"></h1>      
+                        <p id="temperature-data"></p>
+                        <p id="humidity-data"></p>
+                        <p id="wind-data"></p>
+                        <p id="uv-data"></p>
+                    </div>
+                    <div class="jumbotron">
+                        <h2>5-Day Forecast:</h2>
+                        <div id="five-day-wrapper">
+                            <div id="T2-weather"></div>
+                            <div id="T3-weather"></div>
+                            <div id="T4-weather"></div>
+                            <div id="T5-weather"></div>
+                            <div id="T6-weather"></div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>  
+    <script src="Assets/script.js"></script>      
+</body>
+</html>
