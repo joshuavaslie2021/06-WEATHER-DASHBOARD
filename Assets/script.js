@@ -73,6 +73,9 @@ $("#temperature-data").text("Temperature: " + cityTemp)
 $("#humidity-data").text("Humidity: " + cityHumidity)
 $("#wind-data").text("Wind Speed: " + cityWindSpeed)
 $("#uv-data").text("UV Index: " + uvIndex)
+let prevUserArray = [currentCityURL,cityName,cityTemp,cityHumidity,cityWindSpeed,cityLat,cityLon,cityID,cityDate,uvIndex]
+localStorage.setItem("prevusercity",JSON.stringify(prevUserArray))
+console.log(prevUserArray)
 
 
 
