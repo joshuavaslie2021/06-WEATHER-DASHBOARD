@@ -58,15 +58,30 @@ function callForecast(currentCityURL,cityName,cityTemp,cityHumidity,cityWindSpee
          let dayPlusThree = response.list[14]
          let dayPlusFour = response.list[22]
          let dayPlusFive = response.list[30]
-         var forecastArray = {dayPlusOne,dayPlusTwo,dayPlusThree,dayPlusFour,dayPlusFive}
-
+         var forecastArray = [dayPlusOne,dayPlusTwo,dayPlusThree,dayPlusFour,dayPlusFive]
+   
+      for(var i = 0;i < forecastArray.length;i++) {
+        console.log(forecastArray[i])
+        var dateText = forecastArray[i].dt_txt.split(" ",1)[0]
+        var forecastTemp = forecastArray[i].main.temp
+        var forecastHumidity = forecastArray[i].main.humidity
+        console.log(dateText)
+        var dateDiv = $("<div></div")
+   
+      
+        $("#five-day-wrapper").append(dateDiv)
+        dateDiv.append("<p>" + dateText +"</p>")
+        dateDiv.append("<p>Temperature: "+forecastTemp+"F</p>")
+        dateDiv.append("<p>Humidity: "+forecastHumidity+"%</p>")
+        dateDiv.addClass('forecastdiv')
+      }
         console.log(forecastArray)
       renderCityData(currentCityURL,cityName,cityTemp,cityHumidity,cityWindSpeed,cityLat,cityLon,cityID,cityDate,uvIndex)
       });
 }
 
 function renderCityData(currentCityURL,cityName,cityTemp,cityHumidity,cityWindSpeed,cityLat,cityLon,cityID,cityDate,uvIndex) {
-let newCity = $("<button>" + cityName + "</button>")
+let newCity = $(`<button onclick='renderPrevCity()'id='${cityName}'>${cityName}</button>`)
 $("#city-list").append(newCity)
 $("#T-city").text(cityName + "   For:  " + cityDate)
 $("#temperature-data").text("Temperature: " + cityTemp)
@@ -80,4 +95,11 @@ console.log(prevUserArray)
 
 
 
+}
+
+function renderPrevCity() {
+  event.preventDefault()
+  var newcityName = $(this).attr("id")
+  console.log(newcityName)
+  const currentCityURL = `https://api.openweathermap.org/data/2.5/weather?q=${newcityName}&appid=${apiKey}&units=imperial`;
 }
