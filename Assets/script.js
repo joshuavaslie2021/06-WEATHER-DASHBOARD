@@ -1,4 +1,4 @@
-
+$(document).ready(function() {
 const apiKey = "d89be744c6216b194efb9d644e4c713a";
 
 
@@ -78,3 +78,4 @@ $("#uv-data").text("UV Index: " + uvIndex)
 
 
 }
+})
