@@ -1,0 +1,13 @@
+nav {
+    justify-content:  center;
+    text-align: center;
+}
+#city-search{
+    width:60px;
+}
+label {
+    margin-right: 15px;
+}
+#city-search {
+    width:90px;
+}
