@@ -11,3 +11,11 @@ label {
 #city-search {
     width:90px;
 }
+#five-day-wrapper{
+    display:flex;
+}
+.forecastdiv {
+    margin:15px;
+    background-color: blue;
+    color:white;
+}
