@@ -1,4 +1,4 @@
-$(document).ready(function() {
+
 const apiKey = "d89be744c6216b194efb9d644e4c713a";
 
 
@@ -8,7 +8,7 @@ const apiKey = "d89be744c6216b194efb9d644e4c713a";
 $("#cityParameter").on("click", function() {
 
 let cityName = $("#city-search").val()
-const currentCityURL = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=imperial`;
+const currentCityURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=imperial`;
 callCurrentWeather(currentCityURL,cityName)
 })
 
@@ -31,7 +31,7 @@ $.ajax({
 
 function callUVData(currentCityURL,cityName,cityTemp,cityHumidity,cityWindSpeed,cityLat,cityLon,cityID) {
     const uvKey = "7ea17fc2022293bf9be1b6794b77432e";
-    const uvURL = `http://api.openweathermap.org/data/2.5/uvi?lat=${cityLat}&lon=${cityLon}&appid=${uvKey}&units=imperial`;
+    const uvURL = `https://api.openweathermap.org/data/2.5/uvi?lat=${cityLat}&lon=${cityLon}&appid=${uvKey}&units=imperial`;
   $.ajax({
     url: uvURL,
     method: "GET",
@@ -47,7 +47,7 @@ function callUVData(currentCityURL,cityName,cityTemp,cityHumidity,cityWindSpeed,
 
 function callForecast(currentCityURL,cityName,cityTemp,cityHumidity,cityWindSpeed,cityLat,cityLon,cityID,cityDate,uvIndex) {
 
-    const forecastURL = `http://api.openweathermap.org/data/2.5/forecast?id=${cityID}&cnt=40&appid=${apiKey}&units=imperial`;
+    const forecastURL = `https://api.openweathermap.org/data/2.5/forecast?id=${cityID}&cnt=40&appid=${apiKey}&units=imperial`;
     $.ajax({
         url: forecastURL,
         method: "GET",
@@ -78,4 +78,3 @@ $("#uv-data").text("UV Index: " + uvIndex)
 
 
 }
-})
