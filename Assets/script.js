@@ -3,21 +3,30 @@ $(document).ready(function() {
 var prevUserArray = JSON.parse(localStorage.getItem("prevusercity"))
 let currentCityURL = prevUserArray[0];
 let cityName = prevUserArray[1]
-let cityTemp = prevUserArray[2]
-let cityHumidity = prevUserArray[3]
-let cityWindSpeed = prevUserArray[4]
-let cityLat = prevUserArray[5]
-let cityLon = prevUserArray[6]
-let cityID = prevUserArray[7]
-let cityDate = prevUserArray[8]
-let uvIndex = prevUserArray[9]
-callForecast(currentCityURL,cityName,cityTemp,cityHumidity,cityWindSpeed,cityLat,cityLon,cityID,cityDate,uvIndex)
+// let cityTemp = prevUserArray[2]
+// let cityHumidity = prevUserArray[3]
+// let cityWindSpeed = prevUserArray[4]
+// let cityLat = prevUserArray[5]
+// let cityLon = prevUserArray[6]
+// let cityID = prevUserArray[7]
+// let cityDate = prevUserArray[8]
+// let uvIndex = prevUserArray[9]
+// callForecast(currentCityURL,cityName,cityTemp,cityHumidity,cityWindSpeed,cityLat,cityLon,cityID,cityDate,uvIndex)
+
+callCurrentWeather(currentCityURL,cityName)
 })
 
 
 const apiKey = "d89be744c6216b194efb9d644e4c713a";
 
+$("#cityButton").on("click",function() {
+$("#todayWeather").html("")
+  console.log(cityName)
+  const apiKey = "d89be744c6216b194efb9d644e4c713a";
 
+  let currentCityURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=imperial`;
+  callCurrentWeather(currentCityURL,cityName)
+})
 
 
 
@@ -53,7 +62,6 @@ function callUVData(currentCityURL,cityName,cityTemp,cityHumidity,cityWindSpeed,
     url: uvURL,
     method: "GET",
   }).then(function(response) {
-    console.log(response)
     let uvIndex = response.value
     
     let rawDate = response.date_iso;
@@ -95,7 +103,7 @@ function callForecast(currentCityURL,cityName,cityTemp,cityHumidity,cityWindSpee
 }
 
 function renderCityData(currentCityURL,cityName,cityTemp,cityHumidity,cityWindSpeed,cityLat,cityLon,cityID,cityDate,uvIndex) {
-let newCity = $(`<button onclick='renderPrevCity()'id='${cityName}'>${cityName}</button>`)
+let newCity = $(`<button class='Button'id='cityButton'>${cityName}</button>`)
 
 $("#city-list").append(newCity)
 $("#T-city").text(cityName + "   For:  " + cityDate)
@@ -122,10 +130,4 @@ localStorage.setItem("prevusercity",JSON.stringify(prevUserArray))
 
 }
 
-function renderPrevCity(cityVal) {
-  $("#five-day-wrapper").html("")
-  $("#uv-data").html("")
-  console.log(cityVal)
-  const currentCityURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityVal}&appid=${apiKey}&units=imperial`;
-  callCurrentWeather(currentCityURL,cityval)
-}
+
