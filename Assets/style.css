@@ -16,9 +16,10 @@ label {
     display:flex;
 }
 .forecastdiv {
-    margin:15px;
+    margin:5px;
     background-color: blue;
     color:white;
+    height:max-content;
 }
 .low{
     background-color: green;
@@ -31,4 +32,7 @@ label {
 .extreme{
     background-color: red;
     color:white;
+}
+#forecastlabel {
+    width: 100%;
 }
